@@ -3,6 +3,7 @@ import Web3 from "web3";
 import * as Web3ProviderEngine from "web3-provider-engine/dist/es5";
 import * as RpcSource from "web3-provider-engine/dist/es5/subproviders/rpc";
 import Transport from "@ledgerhq/hw-transport-u2f";
+import MainframeSDK from '@mainframe/sdk';
 
 // Utils
 import LedgerSubProvider from "./ledger-subprovider";
@@ -81,19 +82,9 @@ class Web3Extended extends Web3 {
     this.stop();
     return new Promise(async (resolve, reject) => {
       try {
-        if (window.web3 || window.ethereum) {
-          try {
-            let provider;
-            if (window.ethereum) {
-              await window.ethereum.enable();
-              provider = window.ethereum;
-            } else {
-              provider = window.web3.currentProvider;
-            }
-            resolve(provider);
-          } catch (error) {
-            reject(new Error("User denied account access"));
-          }
+        const sdk = new MainframeSDK();
+        if (sdk.ethereum) {
+          resolve(sdk.ethereum.web3Provider);
         } else {
           reject(new Error("No client"));
         }

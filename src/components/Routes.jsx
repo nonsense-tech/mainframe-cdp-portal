@@ -1,7 +1,7 @@
 // Libraries
 import React from "react";
 import {observer} from "mobx-react";
-import {Route, Switch, withRouter} from "react-router-dom";
+import {Route, Switch, withRouter, Redirect} from "react-router-dom";
 import ReactGA from 'react-ga';
 
 // Components
@@ -28,7 +28,7 @@ class App extends React.Component {
         <Route path="/help/:helpId" title="CDP Portal: Help" component={ HelpItem } />
         <Route exact path="/terms" title="CDP Portal: Terms of Service" render={() => <Terms />} />
         <Route exact path="/" title="CDP Portal" component={ Home } />
-        <Route component={ NotFound } />
+        <Route component={() => <Redirect to="/" />} />
       </Switch>
     )
   }

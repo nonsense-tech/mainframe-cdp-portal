@@ -10,6 +10,9 @@ import walletIcons from './WalletIcons';
 @inject("network")
 @observer
 class WalletClientSelector extends React.Component {
+  componentDidMount() {
+    this.props.network.setWeb3WebClient();
+  }
   render() {
     const providerName = getWebClientProviderName();
     return (
