@@ -65,7 +65,7 @@
   "dependencies": {
     "@ledgerhq/hw-app-eth": "^4.7.3",
     "@ledgerhq/hw-transport-u2f": "^4.7.3",
-    "@mainframe/sdk": "^0.2.1",
+    "@mainframe/sdk": "^0.3.0",
     "axios": "^0.18.0",
     "bignumber.js": "^7.2.1",
     "create-react-class": "^15.5.3",
